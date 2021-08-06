@@ -1,0 +1,19 @@
+plugins {
+    id "java"
+    id "maven-publish"
+}
+
+sourceCompatibility = 16
+targetCompatibility = 16
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {url("https://repo.pl3x.net/")}
+}
+
+dependencies {
+    def version = "1.17.1"
+    compileClasspath "net.pl3x.purpur:purpur-api:${version}-R0.1-SNAPSHOT"
+    runtimeClasspath "net.pl3x.purpur:purpur-api:${version}-R0.1-SNAPSHOT"
+}
