@@ -3,17 +3,22 @@ plugins {
     id "maven-publish"
 }
 
-sourceCompatibility = 16
-targetCompatibility = 16
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenLocal()
     mavenCentral()
-    maven {url("https://repo.pl3x.net/")}
+    maven {url = "https://papermc.io/repo/repository/maven-public/"}
 }
 
 dependencies {
-    def version = "1.17.1"
-    compileClasspath "net.pl3x.purpur:purpur-api:${version}-R0.1-SNAPSHOT"
-    runtimeClasspath "net.pl3x.purpur:purpur-api:${version}-R0.1-SNAPSHOT"
+    implementation "io.papermc.paper:paper-api:1.18.1-R0.1-SNAPSHOT"
 }
+/*
+tasks {
+    build {
+        dependsOn(reobfJar)
+    }
+}
+*/
