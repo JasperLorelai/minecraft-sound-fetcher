@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.BufferedWriter;
 
 public class SoundFetcher {
 
@@ -18,13 +19,14 @@ public class SoundFetcher {
 			String version = scanner.nextLine();
 			if (version == null || version.isEmpty()) return;
 
-			File sounds = new File(version + ".txt");
+			File sounds = new File(version + (version.endsWith(".txt") ? "" : ".txt"));
 			sounds.delete();
 			sounds.createNewFile();
 
-			FileWriter writer = new FileWriter(sounds);
+			BufferedWriter writer = new BufferedWriter(new FileWriter(sounds));
 			for (Sound sound : Sound.values()) {
-				writer.append(sound.getKey().value()).append("\n");
+				writer.append(sound.getKey().value());
+				writer.newLine();
 			}
 			writer.close();
 		} catch (IOException e) {
