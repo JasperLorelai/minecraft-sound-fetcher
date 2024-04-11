@@ -1,4 +1,4 @@
-package com.jasperlorelai.soundfetcher;
+package eu.jasperlorelai.soundfetcher;
 
 import org.bukkit.Sound;
 
