@@ -11,10 +11,14 @@ java {
 
 repositories {
     mavenCentral()
+
     maven {url = "https://repo.papermc.io/repository/maven-public/"}
-    maven {url = "https://s01.oss.sonatype.org/content/repositories/snapshots/"}
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
 }
 
 dependencies {
-    implementation("io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT")
+    implementation("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
 }
