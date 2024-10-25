@@ -20,5 +20,5 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 dependencies {
-    implementation("io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT")
+    implementation("io.papermc.paper:paper-api:1.21.3-R0.1-SNAPSHOT")
 }

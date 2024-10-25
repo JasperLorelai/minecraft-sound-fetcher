@@ -25,7 +25,7 @@ public class SoundFetcher {
 
 			BufferedWriter writer = new BufferedWriter(new FileWriter(sounds));
 			for (Sound sound : Sound.values()) {
-				writer.append(sound.getKey().value());
+				writer.append(sound.key().value());
 				writer.newLine();
 			}
 			writer.close();
