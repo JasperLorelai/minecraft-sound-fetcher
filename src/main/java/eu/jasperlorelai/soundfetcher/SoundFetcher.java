@@ -1,17 +1,22 @@
 package eu.jasperlorelai.soundfetcher;
 
-import org.bukkit.Sound;
-
+import java.util.List;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.lang.reflect.Field;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedWriter;
 
+import io.papermc.paper.registry.TypedKey;
+import io.papermc.paper.registry.keys.SoundEventKeys;
+
 public class SoundFetcher {
 
-	@SuppressWarnings("ResultOfMethodCallIgnored")
+	@SuppressWarnings({"ResultOfMethodCallIgnored", "UnstableApiUsage"})
 	public static void main(String[] args) {
 		try {
 			Scanner scanner = new Scanner(System.in);
@@ -19,15 +24,28 @@ public class SoundFetcher {
 			String version = scanner.nextLine();
 			if (version == null || version.isEmpty()) return;
 
-			File sounds = new File(version + (version.endsWith(".txt") ? "" : ".txt"));
-			sounds.delete();
-			sounds.createNewFile();
+			File soundFile = new File(version + (version.endsWith(".txt") ? "" : ".txt"));
+			soundFile.delete();
+			soundFile.createNewFile();
 
-			BufferedWriter writer = new BufferedWriter(new FileWriter(sounds));
-			for (Sound sound : Sound.values()) {
-				writer.append(sound.key().value());
+			List<String> sounds = new ArrayList<>();
+			BufferedWriter writer = new BufferedWriter(new FileWriter(soundFile));
+			for (Field field : SoundEventKeys.class.getDeclaredFields()) {
+				try {
+					@SuppressWarnings("rawtypes")
+					TypedKey key = (TypedKey) field.get(null);
+					sounds.add(key.value());
+				} catch (Exception e) {
+					throw new RuntimeException(e);
+				}
+			}
+
+			Collections.sort(sounds);
+			for (String sound : sounds) {
+				writer.append(sound);
 				writer.newLine();
 			}
+
 			writer.close();
 		} catch (IOException e) {
 			//noinspection CallToPrintStackTrace
