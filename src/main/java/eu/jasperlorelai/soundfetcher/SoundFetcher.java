@@ -16,7 +16,7 @@ import io.papermc.paper.registry.keys.SoundEventKeys;
 
 public class SoundFetcher {
 
-	@SuppressWarnings({"ResultOfMethodCallIgnored", "UnstableApiUsage"})
+	@SuppressWarnings({"ResultOfMethodCallIgnored"})
 	public static void main(String[] args) {
 		try {
 			Scanner scanner = new Scanner(System.in);
