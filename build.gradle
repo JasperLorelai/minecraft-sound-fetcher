@@ -1,6 +1,5 @@
 plugins {
     id "java"
-    id("io.papermc.paperweight.userdev") version "2.0.0-beta.17"
 }
 
 java {
@@ -21,7 +20,11 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 dependencies {
-    var version = "1.21.6-R0.1-SNAPSHOT"
-    implementation("io.papermc.paper:paper-api:" + version)
-    paperweight.paperDevBundle(version)
+    implementation("io.papermc.paper:paper-api:" + mcVersion + "-R0.1-SNAPSHOT")
+}
+
+processResources {
+    filesMatching("config.properties") {
+        expand(mcVersion: mcVersion)
+    }
 }
