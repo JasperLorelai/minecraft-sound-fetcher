@@ -3,7 +3,7 @@ plugins {
 }
 
 java {
-    var version = 21
+    var version = 25
     sourceCompatibility = version
     targetCompatibility = version
     toolchain.languageVersion = JavaLanguageVersion.of(version)
@@ -20,7 +20,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 dependencies {
-    implementation("io.papermc.paper:paper-api:" + mcVersion + "-R0.1-SNAPSHOT")
+    implementation("io.papermc.paper:paper-api:" + mcVersion + ".build.8-alpha")
 }
 
 processResources {
