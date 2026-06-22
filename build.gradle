@@ -20,7 +20,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 dependencies {
-    implementation("io.papermc.paper:paper-api:" + mcVersion + ".build.8-alpha")
+    implementation("io.papermc.paper:paper-api:" + mcVersion + ".+")
 }
 
 processResources {
